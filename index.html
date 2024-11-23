@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+    <!-- Pantalla de carga -->
+    <div id="loadingScreen" class="loading-container">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Cargando datos</div>
+        <div class="loading-subtext">Por favor espere mientras preparamos su información</div>
+    </div>
+
+<div id="mainContent" class="content">
+  <body>
+    <button class="menu-button" id="menuButton">
+        <svg viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+    </button>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <!-- El contenido de bq1 se moverá aquí dinámicamente -->
+        </div>
+    </div>
+    
+    <div id="processingOverlay" class="processing-overlay">
+        <div class="processing-spinner"></div>
+        <div class="processing-text">Procesando envío...</div>
+    </div>
+    
+    <div class="container">
+        <!--Modal Formulario-->
+        <div id="myForm" class="formulario">
+            <div class="modal-content">
+                <span id="close" class="close">&times;</span>
+                <h3 class="form-Title">Enviar Feedback</h3>
+                <form id="feedbackForm">
+                    <div class="modal-mail">                    
+                        <label class="form-label" for="email">Correo:</label>
+                        <input class="form-mail" type="email" id="email" name="new-password" autocomplete="off" required>
+                        <span class="form-mail-name" id="formMailName"></span>
+                        <ul id="emailSuggestions" class="suggestions-list"></ul>
+                    </div>
+
+                    <label class="form-label" for="email">Correo en copia:</label>
+                    <input class="form-mail" type="email" id="cc_email" name="new-password" autocomplete="off" required>
+                    <br>
+
+                    <label class="form-label" for="feedbackType">Tipo de Feedback:</label>
+                    <select class="form-select-option" id="feedbackType" name="feedbackType" required>
+                        <option class="form-option" value="Refuerzo">Refuerzo</option>
+                        <option class="form-option" value="Cambio">Cambio</option>
+                    </select><br>
+
+                    <label class="form-label" for="situation">Situación:</label>
+                    <textarea class="form-textarea" id="situation" name="situation" required></textarea><br>
+
+                    <label class="form-label" for="behavior">Comportamiento:</label>
+                    <textarea class="form-textarea" id="behavior" name="behavior" required></textarea><br>
+
+                    <label class="form-label" for="impact">Impacto:</label>
+                    <textarea class="form-textarea" id="impact" name="impact" required></textarea><br>
+
+                    <button class="form-submit" type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Bloque 1 -->
+        <div class="columna bq1">
+            <!-- Contenido de la primera columna -->
+            <div class="bloque">
+                <!-- Foto en círculo -->
+                <div class="foto-colaborador">
+                    <img id="imgGuest" src="./Imagenes/perfilHombre.png" alt="Foto del Colaborador">
+                </div>
+                <!-- Nombre del colaborador -->
+                <h3 id="myName">Nombre del Colaborador</h3>
+                <!-- Puesto del colaborador -->
+                <p id="myJobName" class="puesto">Puesto del Colaborador</p>
+                <!-- Botones -->
+                <div class="botones">
+                    <button class="boton-feedback boton">Mi Feedback</button>
+                    <button id="dejarFeedback" class="boton-dejar-feedback boton">Dejar un Feedback</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloque 2 -->
+        <div class="columna columna-2 bq2">
+            <img class="foto-feedback" src="./Imagenes/Feedback.jpg" alt="Foto feedback">
+        </div>
+
+        <!-- Bloque 3 -->
+        <div class="columna columna-2 bq3">
+            <div class="titulo">Histórico de feedbacks enviados y recibidos</div>   
+                <div class="nomenclatura">
+                    <p class="nomenclatura-p">F. Recibidos</p>
+                    <p class="nomenclatura-p">F. Enviados</p>
+                </div>
+                <!-- Contenedor del gráfico vertical -->
+                <div class="grafico-vertical">
+                    
+                    <!-- Barra de Feedbacks Recibidos -->
+                    <div class="barra-vertical">
+                        <div id="porcentajeRefuerzoFeedbackRecibido" class="barra-feedback-recibido reforzamiento" style="height: 50%;">
+                            <span id="totalFeedbackRefuerzoRecibido" class="numero numero-refuerzo">#</span>
+                        </div>
+                        <div id="porcentajeCambioFeedbackRecibido"  class="barra-feedback-recibido cambio" style="height: 50%;">
+                            <span id="totalFeedbackCambioRecibido" class="numero numero-cambio">#</span>
+                        </div>
+                    </div>
+
+                    <!-- Barra de Feedbacks Enviados -->
+                    <div class="barra-vertical">
+                        <div id="porcentajeRefuerzoFeedbackEnviado" class="barra-feedback-enviado reforzamiento" style="height: 50%;">
+                            <span id="totalFeedbackRefuerzoEnviado" class="numero numero-refuerzo">#</span>
+                        </div>
+                        <div id="porcentajeCambioFeedbackEnviado" class="barra-feedback-enviado cambio" style="height: 50%;">
+                            <span id="totalFeedbackCambioEnviado" class="numero numero-cambio">#</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="nomenclaturaContainer">
+                <div class="nomenclaturaCuadro nomentaclura-magente"></div>
+                <span class="nomenclaturaSpan">Cambio</span>
+                <div class="nomenclaturaCuadro nomentaclura-refuerzo"></div>
+                <span class="nomenclaturaSpan">Refuerzo</span>       
+                </div>
+
+
+                <!-- Subtítulo y resumen de actividad -->
+                <div class="resumen-actividad">
+                    <h3>Resumen de Actividad</h3>
+                    <p>Feedbacks recibidos: <span id="feedbackRecibidos">Número</span></p>
+                    <p>Feedbacks enviados: <span id="feedbackEnviados">Número</span></p>
+                </div>
+        </div>
+
+        <!-- Bloque 4 -->
+        <div class="columna columna-3 bq4">
+            <div class="titulo">Ultimos colaboradores que recibieron feedback</div>
+            <div class="Ultimos_Feedback_Recibidos">
+                <div class="conteiner_numero">
+                    <div class="numero">01</div>
+                </div>
+                <div id="receptorFeedback1" class="textoNumero">Colaborador</div>
+            </div>
+            
+            <div class="Ultimos_Feedback_Recibidos">
+                <div class="conteiner_numero">
+                    <div class="numero">02</div>  
+                </div>
+                <div id="receptorFeedback2" class="textoNumero">Colaborador</div>
+            </div>
+        </div>
+
+        <!-- Bloque 5 -->
+        <div class="columna columna-3 bq5">
+            <div class="titulo">Últimos colaboradores que enviaron feedback </div>
+            <div class="contenedor-personas">
+                <div class="persona">
+                    <div class="minifoto">
+                        <img id="fotoUltimosenvios1" class="mini-image" src="./Imagenes/perfilHombre.png" alt="Foto del Colaborador">
+                    </div>
+                    <h4 id="nombreUltimosenvios1">Nombre del Colaborador</h4>
+                    <p id="fechaUltimosenvios1" class="fecha-minifoto">Fecha</p>
+                </div>
+            
+                <div class="persona">
+                    <div class="minifoto">
+                        <img id="fotoUltimosenvios2" class="mini-image" src="./Imagenes/perfilHombre.png" alt="Foto del Colaborador">
+                    </div>
+                    <h4 id="nombreUltimosenvios2">Nombre del Colaborador</h4>
+                    <p id="fechaUltimosenvios2" class="fecha-minifoto">Fecha</p>
+                </div>
+            
+                <div class="persona">
+                    <div class="minifoto">
+                        <img id="fotoUltimosenvios3" class="mini-image" src="./Imagenes/perfilHombre.png" alt="Foto del Colaborador">
+                    </div>
+                    <h4 id="nombreUltimosenvios3">Nombre del Colaborador</h4>
+                    <p id="fechaUltimosenvios3" class="fecha-minifoto">Fecha</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloque 6 -->
+        <div class="columna columna-3 bq6">
+            <div class="titulo">Top reconocimientos anual</div>
+            <div class="contenedor-personas">
+                <div class="persona">
+                    <div class="minifoto">
+                        <img id="imgTop1" class="mini-image" src="./Imagenes/perfilHombre.png" alt="Foto del Colaborador">
+                    </div>
+                    <h4 id="nombreTop1" class="nombreTop">Nombre del Colaborador</h4>
+                </div>
+            
+                <div class="persona">
+                    <div class="minifoto">
+                        <img id="imgTop2" class="mini-image" src="./Imagenes/perfilHombre.png" alt="Foto del Colaborador">
+                    </div>
+                    <h4 id="nombreTop2" class="nombreTop">Nombre del Colaborador</h4>
+                </div>
+            
+                <div class="persona">
+                    <div class="minifoto">
+                        <img id="imgTop3" class="mini-image" src="./Imagenes/perfilHombre.png" alt="Foto del Colaborador">
+                    </div>
+                    <h4 id="nombreTop3" class="nombreTop">Nombre del Colaborador</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/main.js" defer></script>
+</body>  <!-- Aquí va todo tu contenido HTML original -->
+</div>
+
+</html>
