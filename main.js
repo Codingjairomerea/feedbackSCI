@@ -5,7 +5,7 @@ import {enviarCorreoConCopia, IDScriptPOSTCorreo} from './doPostMail.js';
 import { findData } from './findData.js';
 import { changeText } from './changeText.js';
 import { getDataFeedback, GET_URL_FEEDBACK } from './doGetFeedback.js';
-import { rankingTopMes } from './RankingTopMes.js';
+import { rankingTopMes } from './rankingTopMes.js';
 import { latestFeedback } from './latestFeedback.js';
 import { dateFormated } from './dateFormated.js';
 import { chooseimage } from './chooseimage.js';
